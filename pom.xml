@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>edu.udla.isw</groupId>
+  <artifactId>evaluacion-practica-ecologistics</artifactId>
+  <version>1.0.0</version>
+  <name>evaluacion-practica-ecologistics</name>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <camel.version>4.14.1</camel.version>
+    <slf4j.version>2.0.13</slf4j.version>
+    <junit.jupiter.version>5.10.2</junit.jupiter.version>
+  </properties>
+
+  <dependencies>
+    <!-- Núcleo Camel + arranque standalone -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-core</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-main</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+
+    <!-- File transfer + CSV (para leer envios.csv) -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-file</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-csv</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+
+    <!-- REST DSL + servidor embebido + OpenAPI -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-rest</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-netty-http</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-openapi-java</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+
+    <!-- JSON (marshal/unmarshal) -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jackson</artifactId>
+      <version>${camel.version}</version>
+    </dependency>
+
+    <!-- Log a consola -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <!-- Tests -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Compilar con Java 17 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
+
+      <!-- JUnit 5 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <useModulePath>false</useModulePath>
+        </configuration>
+      </plugin>
+
+      <!-- Ejecutar la app (Main de Camel) -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.0</version>
+        <configuration>
+          <mainClass>edu.udla.isw.App</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
