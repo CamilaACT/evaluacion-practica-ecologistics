@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "e451f084-50d5-4212-a3a1-ad18165277e5",
+		"name": "Prueba Integracion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30547549",
+		"_collection_link": "https://procelec.postman.co/workspace/My-Workspace~36c7b821-b5be-4580-88b8-75a874c15e5c/collection/30547549-e451f084-50d5-4212-a3a1-ad18165277e5?action=share&source=collection_link&creator=30547549"
+	},
+	"item": [
+		{
+			"name": "GET /envios: lista todos los envíos.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7760/api/envios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7760",
+					"path": [
+						"api",
+						"envios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /envios/id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "POST /envios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"004\",\r\n  \"cliente\": \"Ana Mora\",\r\n  \"direccion\": \"Loja\",\r\n  \"estado\": \"En tránsito\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7760/api/envios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7760",
+					"path": [
+						"api",
+						"envios"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
